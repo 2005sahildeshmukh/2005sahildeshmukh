@@ -1,0 +1,40 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int main() {
+    int playerGuess, diceRoll;
+
+    // Initialize random number generator
+    srand(time(NULL));
+
+    printf("Welcome to the Dice Rolling Game!\n");
+
+    while (1) {
+        printf("Enter your guess (1-6) or 0 to exit: ");
+        scanf("%d", &playerGuess);
+
+        if (playerGuess == 0) {
+            printf("Thanks for playing!\n");
+            break;
+        }
+
+        if (playerGuess < 1 || playerGuess > 6) {
+            printf("Invalid guess. Please enter a number between 1 and 6.\n");
+            continue;
+        }
+
+        // Roll the dice (generate a random number between 1 and 6)
+        diceRoll = rand() % 6 + 1;
+
+        printf("The dice rolled: %d\n", diceRoll);
+
+        if (playerGuess == diceRoll) {
+            printf("Congratulations! You guessed correctly.\n");
+        } else {
+            printf("Sorry, you guessed wrong. Try again!\n");
+        }
+    }
+
+    return 0;
+}
